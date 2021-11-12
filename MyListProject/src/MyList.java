@@ -1,12 +1,12 @@
 import java.util.Iterator;
 
-public class MyList {
+public class MyList<T> {
 	//Tek boyutlu dizi tanımlası: 
-	String[] list; //Reference type
+	T[] list; //Reference type
 	
 	//Default constructor
 	public MyList() {
-		this.list = new String[0];//101
+		this.list = new T[];//101 
 	}
 	
 	//Parametreli constructor
@@ -14,6 +14,7 @@ public class MyList {
 		this.list = list;
 	}
 	
+	//Adding
 	public String[] add(String city) {
 		String[] newList = list; //101
 		//Dizinin eleman sayısını arttırma:
@@ -28,6 +29,7 @@ public class MyList {
 		return list;
 	}
 	
+	//Listing
 	public void getAlllist() {
 		for (String city : list) {
 			System.out.println(city);
