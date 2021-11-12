@@ -28,20 +28,6 @@ public class MyList {
 		return list;
 	}
 	
-	/*public String[] add(String city) {
-		String[] newList = new String[list.length + 1 ]; //102
-		for (int i = 0; i < list.length; i++) {
-			newList[i] = list[i];
-		}
-		newList[newList.length - 1] = city;
-		
-		list = new String[newList.length]; //103
-		for (int i = 0; i < newList.length; i++) {
-			list[i] = newList[i];
-		}
-		return list;
-	}*/
-	
 	public void getAlllist() {
 		for (String city : list) {
 			System.out.println(city);
