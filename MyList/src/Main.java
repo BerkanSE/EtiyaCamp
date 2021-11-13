@@ -10,10 +10,12 @@ public class Main {
 		//list.add(2);
 		
 		//list.remove(2);
-		list.remove("Berkan");
+		list.remove("Burak");
 		list.list();
 		//boolean result = list.contains("Ali");
 		//System.out.println(result);
+		
+		
 	}
 
 }

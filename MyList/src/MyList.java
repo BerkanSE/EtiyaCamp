@@ -24,7 +24,7 @@ public class MyList<T>  {
 	    	for (int i = 0; i < items.length; i++) {
 				if (items[i] == item) {
 					Object a = items[i];
-					items[i ] = items[items.length - 1 ]  ;
+					items[i] = items[items.length - 1 ]  ;
 					items[items.length - 1] = a;	
 				}
 			}
@@ -57,8 +57,8 @@ public class MyList<T>  {
 	    }
 	    
 	    public void list() {
-	        for (Object object : items ) {
-				System.out.println(object);
+	        for (Object item : items ) {
+				System.out.println(item);
 			}
 	    }
 	    
