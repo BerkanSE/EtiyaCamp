@@ -82,7 +82,14 @@ public class Main {
 				//break; //Döngüyü bitirir (5'e kadar yazar)
 				continue; //Sadece 5'i yazmaz
 			}
-			System.out.println(i);
+			//System.out.println(i);
 		}
+		
+		for (int x = 0, y = 0; y < 7; x++, y++) {
+			x *= y;
+			System.out.println("x: " + x + " y: " + y);
+		}
+		
+		
 	}
 }
