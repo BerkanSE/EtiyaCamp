@@ -46,6 +46,7 @@ public class Main {
 		//Döngüler
 		
 		//For (Çoğunlukla)
+		
 		//i --> index : Sayac
 		//Dinamiklestirme: credits.length,
 		//System.out.println("for");
@@ -54,12 +55,14 @@ public class Main {
 		}
 		
 		//Foreach Döngüsü
+		
 		//System.out.println("foreach");
 		for (String credit : credits) {
 			//System.out.println(credit);
 		}
 		
 		//While
+		
 		//System.out.println("while");
 		//Sayaci döngünün dışında tanımlıyoruz.
 		int index = 0;
@@ -69,7 +72,9 @@ public class Main {
 		}
 		
 		//Do while (Az kullanım)
+		
 		//System.out.println("do while");
+		//Şart uymasa bile do-while 1 kere çalışıp ekrana basıcaktır. Çünkü ilk önce do çalışır.
 		int index2 = 0;
 		do {
 			//System.out.println(credits[index2]);
