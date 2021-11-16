@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//src/business/abstracts/UserService.java=UTF-8
+encoding//src/business/concretes/UserCheckManager.java=UTF-8
+encoding//src/business/concretes/UserManager.java=UTF-8
+encoding//src/business/concretes/VerificationMailManager.java=UTF-8
