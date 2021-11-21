@@ -14,6 +14,10 @@ import com.etiya.rentACarSpring.business.requests.DeleteCarRequest;
 import com.etiya.rentACarSpring.business.requests.UpdateCarRequest;
 
 import com.etiya.rentACarSpring.core.utilities.mapping.ModelMapperService;
+import com.etiya.rentACarSpring.core.utilities.results.DataResult;
+import com.etiya.rentACarSpring.core.utilities.results.Result;
+import com.etiya.rentACarSpring.core.utilities.results.SuccessDataResult;
+import com.etiya.rentACarSpring.core.utilities.results.SuccessResult;
 import com.etiya.rentACarSpring.dataAccess.abstracts.CarDao;
 import com.etiya.rentACarSpring.entities.Car;
 
@@ -30,33 +34,36 @@ public class CarManager implements CarService {
 	}
 
 	@Override
-	public List<CarSearchListDto> getAll() {
+	public DataResult<List<CarSearchListDto>> getAll() {
 		List<Car> result = this.carDao.findAll();
 		
 		//Veri tablosundaki veriyi ilgili dto'ya mapledik.
 		List<CarSearchListDto> response = result.stream().map(car -> modelMapperService.forDto()
 				.map(car, CarSearchListDto.class)).collect(Collectors.toList());
 		
-		return response;
+		return new SuccessDataResult<List<CarSearchListDto>>(response, "Araçlar listelendi.");
 		
 	}
 
 	@Override
-	public void save(CreateCarRequest createCarRequest) {
+	public Result save(CreateCarRequest createCarRequest) {
 		Car car = modelMapperService.forRequest().map(createCarRequest, Car.class);
 		this.carDao.save(car);
+		return new SuccessResult("Araç eklendi.");
 	}
 
 	@Override
-	public void update(UpdateCarRequest updateCarRequest) {
+	public Result update(UpdateCarRequest updateCarRequest) {
 		Car car = modelMapperService.forRequest().map(updateCarRequest, Car.class);
 		this.carDao.save(car);
+		return new SuccessResult("Araç güncellendi.");
 	}
 
 	@Override
-	public void delete(DeleteCarRequest deleteCarRequest) {
+	public Result delete(DeleteCarRequest deleteCarRequest) {
 		Car car = modelMapperService.forRequest().map(deleteCarRequest, Car.class);
 		this.carDao.delete(car);
+		return new SuccessResult("Araç silindi.");
 	}
 
 }

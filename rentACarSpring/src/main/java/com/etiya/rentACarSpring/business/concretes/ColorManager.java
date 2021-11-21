@@ -8,6 +8,8 @@ import com.etiya.rentACarSpring.business.requests.CreateColorRequest;
 import com.etiya.rentACarSpring.business.requests.DeleteColorRequest;
 import com.etiya.rentACarSpring.business.requests.UpdateColorRequest;
 import com.etiya.rentACarSpring.core.utilities.mapping.ModelMapperService;
+import com.etiya.rentACarSpring.core.utilities.results.Result;
+import com.etiya.rentACarSpring.core.utilities.results.SuccessResult;
 import com.etiya.rentACarSpring.dataAccess.abstracts.ColorDao;
 import com.etiya.rentACarSpring.entities.Color;
 
@@ -24,21 +26,24 @@ public class ColorManager implements ColorService{
 	}
 
 	@Override
-	public void save(CreateColorRequest createColorRequest) {
+	public Result save(CreateColorRequest createColorRequest) {
 		Color color = modelMapperService.forRequest().map(createColorRequest, Color.class);
 		this.colorDao.save(color);
+		return new SuccessResult("Renk eklendi.");
 	}
 
 	@Override
-	public void update(UpdateColorRequest updateColorRequest) {
+	public Result update(UpdateColorRequest updateColorRequest) {
 		Color color = modelMapperService.forRequest().map(updateColorRequest, Color.class);
 		this.colorDao.save(color);
+		return new SuccessResult("Renk güncellendi.");
 	}
 
 	@Override
-	public void delete(DeleteColorRequest deleteColorRequest) {
+	public Result delete(DeleteColorRequest deleteColorRequest) {
 		Color color = modelMapperService.forRequest().map(deleteColorRequest, Color.class);
 		this.colorDao.delete(color);
+		return new SuccessResult("Renk silindi.");
 	}
 
 }

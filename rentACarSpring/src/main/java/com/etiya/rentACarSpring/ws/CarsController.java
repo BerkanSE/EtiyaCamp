@@ -16,6 +16,8 @@ import com.etiya.rentACarSpring.business.dtos.CarSearchListDto;
 import com.etiya.rentACarSpring.business.requests.CreateCarRequest;
 import com.etiya.rentACarSpring.business.requests.DeleteCarRequest;
 import com.etiya.rentACarSpring.business.requests.UpdateCarRequest;
+import com.etiya.rentACarSpring.core.utilities.results.DataResult;
+import com.etiya.rentACarSpring.core.utilities.results.Result;
 
 @RestController
 @RequestMapping("api/cars")
@@ -37,23 +39,23 @@ public class CarsController {
 	
 	//Controller'da entities ile çalışılmaz. Dto [Data Transfer Object] kullanılır.
 	@GetMapping("all")
-	public List<CarSearchListDto> getAll(){
+	public DataResult<List<CarSearchListDto>> getAll(){
 		return this.carService.getAll();
 	}
 	
 	@PostMapping("add")
-	public void add(@RequestBody CreateCarRequest createCarRequest) {
-		this.carService.save(createCarRequest);
+	public Result add(@RequestBody CreateCarRequest createCarRequest) {
+		return this.carService.save(createCarRequest);
 	}
 	
 	@PutMapping("update")
-	public void update(@RequestBody UpdateCarRequest updateCarRequest) {
-		this.carService.update(updateCarRequest);
+	public Result update(@RequestBody UpdateCarRequest updateCarRequest) {
+		return this.carService.update(updateCarRequest);
 	}
 	
 	@DeleteMapping("delete")
-	public void delete(@RequestBody DeleteCarRequest deleteCarRequest) {
-		this.carService.delete(deleteCarRequest);
+	public Result delete(@RequestBody DeleteCarRequest deleteCarRequest) {
+		return this.carService.delete(deleteCarRequest);
 	}
 	
 }

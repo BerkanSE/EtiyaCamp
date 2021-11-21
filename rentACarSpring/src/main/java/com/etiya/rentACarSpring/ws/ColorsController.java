@@ -15,6 +15,7 @@ import com.etiya.rentACarSpring.business.absracts.ColorService;
 import com.etiya.rentACarSpring.business.requests.CreateColorRequest;
 import com.etiya.rentACarSpring.business.requests.DeleteColorRequest;
 import com.etiya.rentACarSpring.business.requests.UpdateColorRequest;
+import com.etiya.rentACarSpring.core.utilities.results.Result;
 import com.etiya.rentACarSpring.entities.Color;
 
 @RestController
@@ -40,17 +41,17 @@ public class ColorsController {
 	}
 	
 	@PostMapping("add")
-	public void add(@RequestBody CreateColorRequest createColorRequest) {
-		this.colorService.save(createColorRequest);
+	public Result add(@RequestBody CreateColorRequest createColorRequest) {
+		return this.colorService.save(createColorRequest);
 	}
 	
 	@PutMapping("update")
-	public void update(@RequestBody UpdateColorRequest updateColorRequest) {
-		this.colorService.update(updateColorRequest);
+	public Result update(@RequestBody UpdateColorRequest updateColorRequest) {
+		return this.colorService.update(updateColorRequest);
 	}
 	
 	@DeleteMapping("delete")
-	public void delete(@RequestBody DeleteColorRequest deleteColorRequest) {
-		this.colorService.delete(deleteColorRequest);
+	public Result delete(@RequestBody DeleteColorRequest deleteColorRequest) {
+		return this.colorService.delete(deleteColorRequest);
 	}
 }
