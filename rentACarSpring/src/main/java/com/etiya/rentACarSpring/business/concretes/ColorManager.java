@@ -3,10 +3,10 @@ package com.etiya.rentACarSpring.business.concretes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.etiya.rentACarSpring.business.absracts.ColorService;
-import com.etiya.rentACarSpring.business.requests.CreateColorRequest;
-import com.etiya.rentACarSpring.business.requests.DeleteColorRequest;
-import com.etiya.rentACarSpring.business.requests.UpdateColorRequest;
+import com.etiya.rentACarSpring.business.abstracts.ColorService;
+import com.etiya.rentACarSpring.business.requests.creates.CreateColorRequest;
+import com.etiya.rentACarSpring.business.requests.deletes.DeleteColorRequest;
+import com.etiya.rentACarSpring.business.requests.updates.UpdateColorRequest;
 import com.etiya.rentACarSpring.core.utilities.mapping.ModelMapperService;
 import com.etiya.rentACarSpring.core.utilities.results.Result;
 import com.etiya.rentACarSpring.core.utilities.results.SuccessResult;
@@ -26,24 +26,24 @@ public class ColorManager implements ColorService{
 	}
 
 	@Override
-	public Result save(CreateColorRequest createColorRequest) {
+	public Result add(CreateColorRequest createColorRequest) {
 		Color color = modelMapperService.forRequest().map(createColorRequest, Color.class);
 		this.colorDao.save(color);
-		return new SuccessResult("Renk eklendi.");
+		return new SuccessResult("The color has been added.");
 	}
 
 	@Override
 	public Result update(UpdateColorRequest updateColorRequest) {
 		Color color = modelMapperService.forRequest().map(updateColorRequest, Color.class);
 		this.colorDao.save(color);
-		return new SuccessResult("Renk güncellendi.");
+		return new SuccessResult("The color has been updated.");
 	}
 
 	@Override
 	public Result delete(DeleteColorRequest deleteColorRequest) {
 		Color color = modelMapperService.forRequest().map(deleteColorRequest, Color.class);
 		this.colorDao.delete(color);
-		return new SuccessResult("Renk silindi.");
+		return new SuccessResult("The color has been deleted.");
 	}
 
 }

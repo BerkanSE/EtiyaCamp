@@ -1,6 +1,7 @@
 package com.etiya.rentACarSpring.entities;
 
-import java.util.List;
+import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,10 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,32 +23,28 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="cars")
-public class Car {
-	
+@Table(name="rentals")
+public class Rental {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
-	private int id;
-	
-	@Column(name="model_year")
-	private int modelYear;
-	
-	@Column(name="daily_price")
-	private int dailyPrice;
-	
-	@Column(name="description")
-	private String description;
+	private int rentalId;
 	
 	@ManyToOne
-	@JoinColumn(name="brand_id")
-	private Brand brand;
+	@JoinColumn(name="car_id")
+	private Car car;
 	
 	@ManyToOne
-	@JoinColumn(name="color_id")
-	private Color color;
+	@JoinColumn(name="user_id")
+	private User user;
 	
-	@JsonIgnore
-    @OneToMany(mappedBy = "car")
-    private List<Rental> rentals;
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	@Column(name="rent_date")
+	private Date rentDate;
+	
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	@Column(name="return_date")
+	private Date returnDate;
+	
 }

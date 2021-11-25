@@ -1,13 +1,10 @@
 package com.etiya.rentACarSpring.entities;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -18,19 +15,21 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="colors")
-public class Color {
-	
+@Table(name="users")
+public class User {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="color_id")
-	private int colorId;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="user_id")
+	private int id;
 	
-	@Column(name="color_name")
-	private String colorName;
+	@Column(name="email")
+	private String email;
+	
+	@Column(name="password")
+	private String password;
 	
 	
-	@OneToMany(mappedBy="color")
-	private List<Car> cars;
+	
 	
 }
