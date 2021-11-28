@@ -72,7 +72,7 @@ public class RentalManager implements RentalService {
 		return new SuccessResult("Deleted");
 	}
 
-	private Result checkIfCarReturned(int carId) {
+	/*private Result checkIfCarReturned(int carId) {
 		//Where kullanılacak
 		List<Rental> result = this.rentalDao.getByCar_Id(carId);
 		if (result != null) {
@@ -83,8 +83,16 @@ public class RentalManager implements RentalService {
 			}
 		}
 		return new SuccessResult();
-	}
+	}*/
 	
+	private Result checkIfCarReturned(int carId) {
+        //Where kullanılacak
+        RentalSearchListDto result = this.rentalDao.getByCarIdWhereReturnDateIsNull(carId);
+        if (result != null) {
+            return new ErrorResult("Arac teslim edilmemistir");
+        }
+        return new SuccessResult();
+    }
 	
 	
 }

@@ -22,7 +22,7 @@ public class RentalSearchListDto {
 
 	private int carId;
 
-	private int userId;
+//	private int userId;
 
 	private Date rentDate;
 
